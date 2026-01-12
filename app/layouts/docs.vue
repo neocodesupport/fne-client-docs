@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, inject, nextTick, watch, watchEffect } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 // useAppI18n est auto-importé par Nuxt depuis app/composables/
 import Header from '~/components/Header.vue'
@@ -121,45 +121,10 @@ const { t, locale, getLocalizedPath } = useAppI18n()
 const showToc = ref(true)
 const headerRef = ref<InstanceType<typeof Header> | null>(null)
 
-// Récupérer les données depuis les pages via useState (partagé entre page et layout)
-// Utiliser des refs pour stocker les valeurs réactives
-const prevPage = ref<{ title: string; path: string } | null>(null)
-const nextPage = ref<{ title: string; path: string } | null>(null)
-const headings = ref<Array<{ id: string; text: string; depth: number }>>([])
-
-// Fonction pour mettre à jour les valeurs depuis useState
-const updateFromState = async () => {
-  await nextTick() // Attendre que la page ait défini les valeurs
-  await nextTick() // Double nextTick pour s'assurer que tout est prêt
-  const pageKey = `docs-${route.path}`
-  const prevState = useState<{ title: string; path: string } | null>(`${pageKey}-prevPage`, () => null)
-  const nextState = useState<{ title: string; path: string } | null>(`${pageKey}-nextPage`, () => null)
-  const headingsStateValue = useState<Array<{ id: string; text: string; depth: number }>>(`${pageKey}-headings`, () => [])
-  
-  prevPage.value = prevState.value
-  nextPage.value = nextState.value
-  headings.value = headingsStateValue.value || []
-}
-
-// Mettre à jour immédiatement et quand la route change
-updateFromState()
-
-// Surveiller les changements de route
-watch(() => route.path, async () => {
-  await nextTick()
-  await nextTick()
-  updateFromState()
-}, { immediate: false })
-
-// Surveiller aussi les changements dans useState pour une mise à jour en temps réel
-watchEffect(async () => {
-  const pageKey = `docs-${route.path}`
-  await nextTick()
-  const headingsStateValue = useState<Array<{ id: string; text: string; depth: number }>>(`${pageKey}-headings`, () => [])
-  if (headingsStateValue.value && headingsStateValue.value.length > 0) {
-    headings.value = headingsStateValue.value
-  }
-})
+// Utiliser useDocsPageState pour accéder aux états de manière synchrone
+// useState est appelé de manière synchrone au niveau du setup dans useDocsPageState
+// Les valeurs retournées sont déjà des computed réactifs
+const { prevPage, nextPage, headings } = useDocsPageState()
 
 const toggleToc = () => {
   showToc.value = !showToc.value
