@@ -52,6 +52,16 @@ export default defineNuxtConfig({
             ]
         }
     },
+
+    content: {
+        database: {
+            type: 'fs'
+        }
+    },
+
+    experimental: {
+        oxc: false
+    },
     
     devtools: { enabled: true }
 })
