@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: nord --default, dim --prefersdark, nord;
+}
+
+/* CSS Variales */
+
+:root {
+    --ui-container: 80rem;
+    /* Hauteur du header : h-16 (64px) + mt-4 (16px) + py-2 (8px top + 8px bottom) = ~96px */
+    --ui-header-height: 96px;
+}
+
+/* Smooth scroll global */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Import des thèmes highlight.js */
+/* Night-owl pour le mode light - importé en premier */
+@import "./highlight.js/themes/night-owl.css";
+/* Tokyo-night pour le mode dark - importé en dernier */
+@import "./highlight.js/themes/tokyo-night.css";
+
+/* Surcharger les styles pour s'adapter au contexte code-highlight */
+.code-highlight code.hljs,
+.code-highlight .hljs {
+  background: transparent !important;
+  color: inherit;
+  display: inline;
+  line-height: 1!important;
+}
+
+/* Appliquer line-height: 1 aux lignes de code */
+.code-highlight pre {
+  line-height: 1!important;
+  padding: 0!important;
+}
+
+.code-highlight pre + pre {
+  margin-top: .75rem!important;
+}
+
+.code-highlight pre code {
+  line-height: 1!important;
+}
+
+/* Thème light (nord) - utiliser Night Owl */
+/* Night Owl s'applique par défaut */
+[data-theme="nord"] .code-highlight .hljs,
+[data-theme="nord"] pre code.hljs,
+[data-theme="nord"] .hljs {
+  background: transparent !important;
+}
+
+/* Forcer Night Owl en mode light - override Tokyo Night */
+[data-theme="nord"] .hljs {
+  background: #011627 !important;
+  color: #d6deeb !important;
+}
+
+/* Masquer les styles Tokyo Night en mode light */
+[data-theme="nord"] .hljs-meta,
+[data-theme="nord"] .hljs-comment {
+  color: #637777 !important;
+  font-style: italic !important;
+}
+
+[data-theme="nord"] .hljs-keyword {
+  color: #c792ea !important;
+  font-style: italic !important;
+}
+
+[data-theme="nord"] .hljs-string {
+  color: #ecc48d !important;
+}
+
+[data-theme="nord"] .hljs-number {
+  color: #F78C6C !important;
+}
+
+[data-theme="nord"] .hljs-function {
+  color: #82AAFF !important;
+}
+
+[data-theme="nord"] .hljs-built_in {
+  color: #addb67 !important;
+  font-style: italic !important;
+}
+
+/* Thème dark (dim) - utiliser Tokyo Night */
+/* Tokyo Night override Night Owl en mode dark */
+[data-theme="dim"] .code-highlight .hljs,
+[data-theme="dim"] pre code.hljs,
+[data-theme="dim"] .hljs {
+  background: transparent !important;
+}
+
+/* Forcer Tokyo Night en mode dark */
+[data-theme="dim"] .hljs {
+  background: #1a1b26 !important;
+  color: #9aa5ce !important;
+}
+
+/* Appliquer les couleurs Tokyo Night en mode dark */
+[data-theme="dim"] .hljs-meta,
+[data-theme="dim"] .hljs-comment {
+  color: #565f89 !important;
+}
+
+[data-theme="dim"] .hljs-keyword {
+  color: #7dcfff !important;
+}
+
+[data-theme="dim"] .hljs-string {
+  color: #9ece6a !important;
+}
+
+[data-theme="dim"] .hljs-number {
+  color: #ff9e64 !important;
+}
+
+[data-theme="dim"] .hljs-function,
+[data-theme="dim"] .hljs-title.function_ {
+  color: #7dcfff !important;
+}
+
+[data-theme="dim"] .hljs-built_in {
+  color: #e0af68 !important;
+}
+
+/* Logo avec filtre invert en mode dark */
+[data-theme="dim"] img[src="/logo.png"],
+[data-theme="dim"] img[alt="FNE Client Logo"] {
+  filter: invert(0.8);
+  transition: filter 0.3s ease;
+}
+
+/* Styles pour les boutons avec effet d'ombrage brutalist */
+.btn-brutalist {
+  border: 2px solid;
+  border-radius: 0.625rem;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+[data-theme="nord"] .btn-brutalist {
+  border-color: hsl(var(--bc));
+  box-shadow: 5px 5px 0px 0px hsl(var(--bc));
+}
+
+[data-theme="dim"] .btn-brutalist {
+  border-color: hsl(var(--bc));
+  box-shadow: 5px 5px 0px 0px hsl(var(--bc));
+}
+
+[data-theme="nord"] .btn-brutalist:hover {
+  box-shadow: 5px 5px 0px 0px hsl(var(--p));
+}
+
+[data-theme="dim"] .btn-brutalist:hover {
+  box-shadow: 5px 5px 0px 0px hsl(var(--p));
+}
+
+.btn-brutalist:active {
+  box-shadow: none;
+  transform: translate(5px, 5px);
+}
+
+/* Appliquer le style brutalist à tous les boutons daisyUI principaux */
+.btn-primary,
+.btn-secondary,
+.btn-accent,
+.btn-outline:not(.btn-ghost) {
+  border: 2px solid hsl(var(--bc)) !important;
+  border-radius: 0.625rem !important;
+  box-shadow: 5px 5px 0px 0px hsl(var(--bc)) !important;
+  font-weight: bold !important;
+  transition: all 0.3s !important;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-accent:hover,
+.btn-outline:not(.btn-ghost):hover {
+  box-shadow: 5px 5px 0px 0px hsl(var(--p)) !important;
+}
+
+.btn-primary:active,
+.btn-secondary:active,
+.btn-accent:active,
+.btn-outline:not(.btn-ghost):active {
+  box-shadow: none !important;
+  transform: translate(5px, 5px) !important;
+}
+
+/* Styles pour les headings avec liens d'ancrage (style Laravel Zap) */
+.prose h2,
+.prose h3,
+.prose h4 {
+  position: relative;
+}
+
+/* Lien d'ancrage dans les headings */
+.prose .heading-anchor {
+  position: absolute;
+  left: -2rem;
+  top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .prose h2:hover .heading-anchor,
+  .prose h3:hover .heading-anchor,
+  .prose h4:hover .heading-anchor,
+  .prose h2:focus-within .heading-anchor,
+  .prose h3:focus-within .heading-anchor,
+  .prose h4:focus-within .heading-anchor {
+    opacity: 1;
+  }
+  
+  .prose .heading-anchor:hover {
+    color: hsl(var(--p));
+  }
+}
