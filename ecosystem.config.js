@@ -4,7 +4,7 @@ module.exports = {
         {
             name: "fne-client-docs",
             script: ".output/server/index.mjs",
-            cwd: "/var/www/fne-client-docs",
+            cwd: "/var/www/html/fne-client-docs",
             exec_mode: "fork",
             instances: 1,
             env: {
