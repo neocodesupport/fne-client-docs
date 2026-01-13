@@ -24,7 +24,10 @@
           class="fixed inset-0 bg-base-100/95 backdrop-blur-lg z-40 md:hidden"
           @click="headerRef?.toggleMobileMenu"
         >
-          <div class="flex flex-col items-center justify-center gap-8 h-full px-4">
+          <div 
+            class="flex flex-col items-center justify-center gap-8 h-full px-4 pb-20"
+            @click.stop
+          >
             <NuxtLink 
               v-for="(item, index) in mobileMenuItems"
               :key="index"
@@ -41,9 +44,23 @@
             >
               {{ t('home.cta.start') }}
             </NuxtLink>
+            
+            <!-- Sélection de langue dans le menu mobile -->
+            <div class="flex flex-col items-center gap-4 pt-4 border-t border-base-300 w-full max-w-xs">
+              <span class="text-sm text-base-content/70">{{ t('nav.select-language') }}</span>
+              <LanguageToggle :open-up="true" />
+            </div>
           </div>
         </div>
       </Transition>
+    </ClientOnly>
+    
+    <!-- Bouton flottant pour la recherche (mobile uniquement) -->
+    <ClientOnly>
+      <FloatingSearchButton 
+        v-if="headerRef"
+        @open-search="handleOpenSearch"
+      />
     </ClientOnly>
 
     <!-- Search Modal -->
@@ -67,6 +84,8 @@ import { computed, ref } from 'vue'
 // useAppI18n est auto-importé par Nuxt depuis app/composables/
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
+import LanguageToggle from '~/components/LanguageToggle.vue'
+import FloatingSearchButton from '~/components/FloatingSearchButton.vue'
 
 const { t, locale, getLocalizedPath } = useAppI18n()
 const headerRef = ref<InstanceType<typeof Header> | null>(null)
@@ -76,4 +95,10 @@ const mobileMenuItems = computed(() => [
   { label: t('nav.documentation'), path: '/docs' },
   { label: t('nav.examples'), path: '/docs/examples' }
 ])
+
+const handleOpenSearch = () => {
+  if (headerRef.value) {
+    headerRef.value.openSearch()
+  }
+}
 </script>

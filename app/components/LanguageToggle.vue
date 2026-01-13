@@ -32,7 +32,7 @@
           :to="getLocalizedPath('en')"
           class="flex items-center gap-2 rounded-lg"
           :class="{ 'bg-primary text-primary-content': currentLocale === 'en', 'hover:bg-base-200': currentLocale !== 'en' }"
-          @click="selectLanguage('en')"
+          @click="(e) => selectLanguage('en', e)"
         >
           <span class="text-lg">🇬🇧</span>
           <span class="font-medium">English</span>
@@ -44,7 +44,7 @@
           :to="getLocalizedPath('fr')"
           class="flex items-center gap-2 rounded-lg"
           :class="{ 'bg-primary text-primary-content': currentLocale === 'fr', 'hover:bg-base-200': currentLocale !== 'fr' }"
-          @click="selectLanguage('fr')"
+          @click="(e) => selectLanguage('fr', e)"
         >
           <span class="text-lg">🇫🇷</span>
           <span class="font-medium">Français</span>
@@ -74,7 +74,12 @@ const toggleDropdown = (e: MouseEvent) => {
   isOpen.value = !isOpen.value
 }
 
-const selectLanguage = (targetLocale: string) => {
+const selectLanguage = (targetLocale: string, e?: MouseEvent) => {
+  // Empêcher la propagation de l'événement pour éviter de fermer les menus parents
+  if (e) {
+    e.stopPropagation()
+  }
+  
   const newPath = getLocalizedPath(targetLocale)
   
   // Sauvegarder la langue dans localStorage
