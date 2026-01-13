@@ -15,7 +15,7 @@ export default defineContentConfig({
       type: 'page',
       source: {
         driver: 'fs',
-        base: './content/en',
+        base: 'content/en',
         include: '**/*.md',
         prefix: '',
       },
@@ -26,7 +26,7 @@ export default defineContentConfig({
       type: 'page',
       source: {
         driver: 'fs',
-        base: './content/fr',
+        base: 'content/fr',
         include: '**/*.md',
         prefix: '',
       },
