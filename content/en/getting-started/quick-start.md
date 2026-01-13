@@ -218,4 +218,4 @@ Now that you've created your first invoice:
 4. [Examples](/docs/examples) - Check out more code examples
 
 > [!info]
-> **Need help?** Check out the [complete documentation](/docs) or [open an issue](https://github.com/neocode/fne-client/issues) on GitHub.
+> **Need help?** Check out the [complete documentation](https://fne-client.neocode.ci/) or [open an issue](https://github.com/neocodesupport/fne-client/issues) on GitHub.

@@ -1,6 +1,11 @@
-# Nuxt Minimal Starter
+# FNE Client Documentation
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Documentation officielle pour FNE Client - PHP SDK pour l'API FNE (Facture Normalisée Électronique).
+
+## Liens
+
+- **Documentation en ligne** : https://fne-client.neocode.ci/
+- **Repository GitHub** : https://github.com/neocodesupport/fne-client
 
 ## Setup
 

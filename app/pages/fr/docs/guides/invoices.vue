@@ -353,7 +353,7 @@ $result = $invoice->certify([
         documentation complète
       </NuxtLink> 
       ou 
-      <a href="https://github.com/neocode/fne-client/issues" target="_blank" class="text-primary border-b border-transparent hover:border-primary font-medium">
+      <a href="https://github.com/neocodesupport/fne-client/issues" target="_blank" class="text-primary border-b border-transparent hover:border-primary font-medium">
         ouvrez une issue
       </a> 
       sur GitHub.
@@ -402,4 +402,5 @@ setPrevPage(null)
 setNextPage(null)
 setHeadings(headings)
 </script>
+
 

@@ -317,4 +317,4 @@ while ($retryCount < $maxRetries) {
 - [Exemples](/fr/docs/examples) - Consultez plus d'exemples de gestion d'erreurs
 
 > [!info]
-> **Besoin d'aide ?** Consultez la [documentation complète](/fr/docs) ou [ouvrez une issue](https://github.com/neocode/fne-client/issues) sur GitHub.
+> **Besoin d'aide ?** Consultez la [documentation complète](https://fne-client.neocode.ci/) ou [ouvrez une issue](https://github.com/neocodesupport/fne-client/issues) sur GitHub.

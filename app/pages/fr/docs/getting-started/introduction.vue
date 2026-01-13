@@ -152,7 +152,7 @@ $invoice->certify();`"
         </NuxtLink>
       </DocListItem>
       <DocListItem>
-        <a href="https://github.com/neocode/fne-client" target="_blank" class="text-primary border-b border-transparent hover:border-primary font-medium">
+        <a href="https://github.com/neocodesupport/fne-client" target="_blank" class="text-primary border-b border-transparent hover:border-primary font-medium">
           GitHub
         </a>
       </DocListItem>
@@ -196,4 +196,5 @@ setPrevPage(null)
 setNextPage(nextPage)
 setHeadings(headings)
 </script>
+
 

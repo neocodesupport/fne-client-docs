@@ -143,4 +143,4 @@ Once installation is complete:
 2. [Quick Start](/docs/getting-started/quick-start) - Create your first certified invoice
 
 > [!info]
-> **Need help?** Check out the [complete documentation](/docs) or [open an issue](https://github.com/neocode/fne-client/issues) on GitHub.
+> **Need help?** Check out the [complete documentation](https://fne-client.neocode.ci/) or [open an issue](https://github.com/neocodesupport/fne-client/issues) on GitHub.

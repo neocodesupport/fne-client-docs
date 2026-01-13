@@ -45,7 +45,7 @@
               
               <!-- GitHub Link -->
               <a 
-                href="https://github.com/neocode/fne-client" 
+                href="https://github.com/neocodesupport/fne-client" 
                 target="_blank"
                 rel="noopener noreferrer"
                 class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg text-base-content/60 hover:text-base-content hover:bg-base-200/50 transition-all duration-200"

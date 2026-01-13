@@ -87,4 +87,4 @@ class CustomLogger implements LoggerInterface
 - [Troubleshooting](/docs/advanced/troubleshooting) - Resolve issues
 
 > [!info]
-> **Need help?** Check out the [complete documentation](/docs) or [open an issue](https://github.com/neocode/fne-client/issues) on GitHub.
+> **Need help?** Check out the [complete documentation](https://fne-client.neocode.ci/) or [open an issue](https://github.com/neocodesupport/fne-client/issues) on GitHub.

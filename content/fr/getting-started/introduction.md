@@ -88,4 +88,4 @@ FNE Client est compatible avec :
 - [Documentation complète](/fr/docs)
 - [Exemples de code](/fr/docs/examples)
 - [Référence API](/fr/docs/api-reference)
-- [GitHub](https://github.com/neocode/fne-client)
+- [GitHub](https://github.com/neocodesupport/fne-client)

@@ -137,12 +137,18 @@ const copyPageUrl = () => {
 }
 
 const editPageUrl = computed(() => {
-  // TODO: Générer l'URL GitHub pour éditer la page
-  return `https://github.com/.../edit/main/app/content${route.path.replace('/docs', '/fr')}.md`
+  // Générer l'URL GitHub pour éditer la page
+  let path = route.path.replace('/docs', '').replace('/fr/docs', '')
+  if (!path.startsWith('/')) {
+    path = '/' + path
+  }
+  const locale = route.path.startsWith('/fr') ? 'fr' : 'en'
+  // Le repository de la documentation est fne-client-docs
+  return `https://github.com/neocodesupport/fne-client-docs/edit/main/content/${locale}${path}.md`
 })
 
 const reportIssueUrl = computed(() => {
-  // TODO: Générer l'URL GitHub Issues
-  return `https://github.com/.../issues/new?title=Issue with ${route.path}`
+  // Générer l'URL GitHub Issues pour le repository du package (fne-client)
+  return `https://github.com/neocodesupport/fne-client/issues/new`
 })
 </script>

@@ -175,4 +175,4 @@ $result = $purchase->submit(); // Automatically extracts data
 - [Error Handling](/docs/guides/error-handling) - Handle errors efficiently
 
 > [!info]
-> **Need help?** Check out the [complete documentation](/docs) or [open an issue](https://github.com/neocode/fne-client/issues) on GitHub.
+> **Need help?** Check out the [complete documentation](https://fne-client.neocode.ci/) or [open an issue](https://github.com/neocodesupport/fne-client/issues) on GitHub.

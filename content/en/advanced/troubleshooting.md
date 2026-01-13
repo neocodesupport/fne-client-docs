@@ -42,4 +42,4 @@ This guide helps you resolve common issues with FNE Client.
 - [Logging](/docs/guides/logging) - Configure logging for debugging
 
 > [!info]
-> **Need help?** Check out the [complete documentation](/docs) or [open an issue](https://github.com/neocode/fne-client/issues) on GitHub.
+> **Need help?** Check out the [complete documentation](https://fne-client.neocode.ci/) or [open an issue](https://github.com/neocodesupport/fne-client/issues) on GitHub.
