@@ -47,31 +47,31 @@
             <div class="border-t border-base-300 w-full"></div>
           </div>
 
-          <!-- Navigation bas de page (style Laravel Zap) -->
-          <div v-if="prevPage || nextPage" class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+          <!-- Navigation bas de page -->
+          <div v-if="prevPage || nextPage" class="flex items-center justify-between gap-4 mt-8 pt-8 border-t border-base-300">
             <NuxtLink 
               v-if="prevPage" 
               :to="prevPage.path" 
-              class="group block px-6 py-8 rounded-lg border border-base-300 hover:bg-base-200/50 transition-colors"
+              class="group flex items-center gap-2 px-4 py-2 rounded-lg border border-base-300 hover:bg-base-200/50 hover:border-primary/50 transition-colors"
             >
-              <div class="inline-flex items-center rounded-full p-1.5 bg-base-200 group-hover:bg-primary/10 ring ring-base-300 group-hover:ring-primary/50 transition mb-4">
-                <Icon name="heroicons:arrow-left" class="w-5 h-5 text-base-content group-hover:text-primary transition-[color,transform] group-active:-translate-x-0.5" />
+              <Icon name="heroicons:arrow-left" class="w-4 h-4 text-base-content/70 group-hover:text-primary transition-colors" />
+              <div class="flex flex-col">
+                <span class="text-xs text-base-content/50 group-hover:text-base-content/70 transition-colors">{{ t('docs.previous') }}</span>
+                <span class="text-sm font-medium text-base-content/70 group-hover:text-primary transition-colors">{{ prevPage.title }}</span>
               </div>
-              <p class="font-medium text-[15px] text-base-content mb-1 truncate">{{ prevPage.title }}</p>
-              <p class="text-sm text-base-content/60 line-clamp-2">{{ t('docs.previous') }}</p>
             </NuxtLink>
             <div v-else></div>
             
             <NuxtLink 
               v-if="nextPage" 
               :to="nextPage.path" 
-              class="group block px-6 py-8 rounded-lg border border-base-300 hover:bg-base-200/50 transition-colors text-right sm:ml-auto"
+              class="group flex items-center gap-2 px-4 py-2 rounded-lg border border-base-300 hover:bg-base-200/50 hover:border-primary/50 transition-colors ml-auto"
             >
-              <div class="inline-flex items-center rounded-full p-1.5 bg-base-200 group-hover:bg-primary/10 ring ring-base-300 group-hover:ring-primary/50 transition mb-4 ml-auto">
-                <Icon name="heroicons:arrow-right" class="w-5 h-5 text-base-content group-hover:text-primary transition-[color,transform] group-active:translate-x-0.5" />
+              <div class="flex flex-col text-right">
+                <span class="text-xs text-base-content/50 group-hover:text-base-content/70 transition-colors">{{ t('docs.next') }}</span>
+                <span class="text-sm font-medium text-base-content/70 group-hover:text-primary transition-colors">{{ nextPage.title }}</span>
               </div>
-              <p class="font-medium text-[15px] text-base-content mb-1 truncate">{{ nextPage.title }}</p>
-              <p class="text-sm text-base-content/60 line-clamp-2">{{ t('docs.next') }}</p>
+              <Icon name="heroicons:arrow-right" class="w-4 h-4 text-base-content/70 group-hover:text-primary transition-colors" />
             </NuxtLink>
             <div v-else></div>
           </div>
