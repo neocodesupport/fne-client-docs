@@ -1,22 +1,31 @@
 <template>
-  <div class="dropdown dropdown-end" :class="{ 'dropdown-open': isOpen }">
+  <div 
+    class="dropdown" 
+    :class="{ 
+      'dropdown-end': !openUp,
+      'dropdown-top dropdown-end': openUp,
+      'dropdown-open': isOpen 
+    }"
+  >
     <div 
       tabindex="0" 
       role="button" 
-      class="btn btn-ghost btn-sm gap-2"
+      class="btn btn-ghost btn-sm gap-2 min-w-[44px] min-h-[44px]"
       @click="toggleDropdown"
+      :aria-label="`Select language, current: ${currentLocale === 'en' ? 'English' : 'Français'}`"
     >
-      <Icon name="heroicons:language" class="w-5 h-5" />
-      <span class="hidden sm:inline">{{ currentLocale.toUpperCase() }}</span>
+      <Icon name="heroicons:language" class="w-5 h-5 flex-shrink-0" />
+      <span class="hidden min-[375px]:inline">{{ currentLocale.toUpperCase() }}</span>
       <Icon 
         name="heroicons:chevron-down" 
-        class="w-4 h-4 transition-transform duration-200"
+        class="w-4 h-4 transition-transform duration-200 flex-shrink-0"
         :class="{ 'rotate-180': isOpen }"
       />
     </div>
     <ul 
       tabindex="0" 
-      class="dropdown-content menu bg-base-100 rounded-box z-[200] w-36 p-2 gap-2 shadow-lg border border-base-300 mt-2"
+      class="dropdown-content menu bg-base-100 rounded-box z-[200] w-36 p-2 gap-2 shadow-lg border border-base-300"
+      :class="openUp ? 'mb-2' : 'mt-2'"
     >
       <li>
         <NuxtLink 
@@ -51,6 +60,10 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 // useAppI18n est auto-importé par Nuxt depuis app/composables/
 
+const props = defineProps<{
+  openUp?: boolean
+}>()
+
 const route = useRoute()
 const router = useRouter()
 const isOpen = ref(false)
@@ -63,6 +76,11 @@ const toggleDropdown = (e: MouseEvent) => {
 
 const selectLanguage = (targetLocale: string) => {
   const newPath = getLocalizedPath(targetLocale)
+  
+  // Sauvegarder la langue dans localStorage
+  if (import.meta.client) {
+    localStorage.setItem('locale', targetLocale)
+  }
   
   // Fermer le dropdown
   isOpen.value = false

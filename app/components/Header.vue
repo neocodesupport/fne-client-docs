@@ -17,7 +17,7 @@
               </NuxtLink>
             </div>
 
-            <!-- Search (centré) -->
+            <!-- Search (centré) - Visible sur tablette et desktop -->
             <div class="hidden md:flex flex-1 max-w-md mx-8">
               <button 
                 @click="openSearch"
@@ -31,15 +31,6 @@
 
             <!-- Actions droite -->
             <div class="flex items-center gap-2">
-              <!-- Search (mobile) -->
-              <button 
-                class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-base-content/70 hover:text-base-content hover:bg-base-200/50 transition-all duration-200" 
-                @click="openSearch"
-                :aria-label="t('header.search-aria')"
-              >
-                <Icon name="heroicons:magnifying-glass" class="w-5 h-5" />
-              </button>
-
               <!-- Toggle Dark Mode -->
               <ThemeToggle />
               
@@ -54,8 +45,10 @@
                 <Icon name="simple-icons:github" class="w-5 h-5" />
               </a>
 
-              <!-- Language Toggle -->
-              <LanguageToggle />
+              <!-- Language Toggle - Visible sur tablette et desktop -->
+              <div class="hidden md:block">
+                <LanguageToggle />
+              </div>
 
               <!-- CTA Button (optionnel) -->
               <NuxtLink 
@@ -66,10 +59,10 @@
                 {{ t('home.cta.start') }}
               </NuxtLink>
 
-              <!-- Menu mobile hamburger (optionnel) -->
+              <!-- Menu mobile hamburger (pour pages docs) -->
               <button 
                 v-if="props.showMobileMenu"
-                class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-base-content/70 hover:text-base-content hover:bg-base-200/50 transition-all duration-200" 
+                class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg text-base-content/70 hover:text-base-content hover:bg-base-200/50 transition-all duration-200" 
                 @click="toggleMobileMenu"
                 :aria-label="t('header.menu-aria')"
               >

@@ -103,6 +103,11 @@ export function useAppI18n() {
         'header.search-aria': 'Search',
         'header.menu-aria': 'Menu',
         'header.github-aria': 'GitHub',
+        'header.close-menu': 'Close menu',
+        
+        // Navigation mobile
+        'nav.menu-title': 'Navigation',
+        'nav.select-language': 'Language',
         
         // Footer
         'footer.learn': 'Learn',
@@ -255,6 +260,11 @@ export function useAppI18n() {
         'header.search-aria': 'Rechercher',
         'header.menu-aria': 'Menu',
         'header.github-aria': 'GitHub',
+        'header.close-menu': 'Fermer le menu',
+        
+        // Navigation mobile
+        'nav.menu-title': 'Navigation',
+        'nav.select-language': 'Langue',
         
         // Footer
         'footer.learn': 'Apprendre',

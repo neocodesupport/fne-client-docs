@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-    themes: nord --default, dim --prefersdark, nord;
+    themes: bumblebee --default, dim --prefersdark, bumblebee;
 }
 
 /* CSS Variales */
@@ -52,45 +52,45 @@ html {
   line-height: 1!important;
 }
 
-/* Thème light (nord) - utiliser Night Owl */
+/* Thème light (bumblebee) - utiliser Night Owl */
 /* Night Owl s'applique par défaut */
-[data-theme="nord"] .code-highlight .hljs,
-[data-theme="nord"] pre code.hljs,
-[data-theme="nord"] .hljs {
+[data-theme="bumblebee"] .code-highlight .hljs,
+[data-theme="bumblebee"] pre code.hljs,
+[data-theme="bumblebee"] .hljs {
   background: transparent !important;
 }
 
 /* Forcer Night Owl en mode light - override Tokyo Night */
-[data-theme="nord"] .hljs {
+[data-theme="bumblebee"] .hljs {
   background: #011627 !important;
   color: #d6deeb !important;
 }
 
 /* Masquer les styles Tokyo Night en mode light */
-[data-theme="nord"] .hljs-meta,
-[data-theme="nord"] .hljs-comment {
+[data-theme="bumblebee"] .hljs-meta,
+[data-theme="bumblebee"] .hljs-comment {
   color: #637777 !important;
   font-style: italic !important;
 }
 
-[data-theme="nord"] .hljs-keyword {
+[data-theme="bumblebee"] .hljs-keyword {
   color: #c792ea !important;
   font-style: italic !important;
 }
 
-[data-theme="nord"] .hljs-string {
+[data-theme="bumblebee"] .hljs-string {
   color: #ecc48d !important;
 }
 
-[data-theme="nord"] .hljs-number {
+[data-theme="bumblebee"] .hljs-number {
   color: #F78C6C !important;
 }
 
-[data-theme="nord"] .hljs-function {
+[data-theme="bumblebee"] .hljs-function {
   color: #82AAFF !important;
 }
 
-[data-theme="nord"] .hljs-built_in {
+[data-theme="bumblebee"] .hljs-built_in {
   color: #addb67 !important;
   font-style: italic !important;
 }
@@ -151,7 +151,7 @@ html {
   font-weight: bold;
 }
 
-[data-theme="nord"] .btn-brutalist {
+[data-theme="bumblebee"] .btn-brutalist {
   border-color: hsl(var(--bc));
   box-shadow: 5px 5px 0px 0px hsl(var(--bc));
 }
@@ -161,7 +161,7 @@ html {
   box-shadow: 5px 5px 0px 0px hsl(var(--bc));
 }
 
-[data-theme="nord"] .btn-brutalist:hover {
+[data-theme="bumblebee"] .btn-brutalist:hover {
   box-shadow: 5px 5px 0px 0px hsl(var(--p));
 }
 

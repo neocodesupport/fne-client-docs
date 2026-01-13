@@ -23,7 +23,7 @@ const isDark = ref(false)
 
 const toggleDarkMode = () => {
   isDark.value = !isDark.value
-  const theme = isDark.value ? 'dim' : 'nord'
+  const theme = isDark.value ? 'dim' : 'bumblebee'
   document.documentElement.setAttribute('data-theme', theme)
   if (import.meta.client) {
     localStorage.setItem('theme', theme)
@@ -35,7 +35,7 @@ onMounted(() => {
   if (import.meta.client) {
     // D'abord, détecter la préférence système
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const systemTheme = prefersDark ? 'dim' : 'nord'
+    const systemTheme = prefersDark ? 'dim' : 'bumblebee'
     
     // Vérifier s'il y a un thème sauvegardé, sinon utiliser la préférence système
     const savedTheme = localStorage.getItem('theme')
@@ -55,7 +55,7 @@ onMounted(() => {
       // Ne mettre à jour que si l'utilisateur n'a pas explicitement choisi un thème
       // (c'est-à-dire si le thème actuel correspond toujours à la préférence système)
       const currentTheme = document.documentElement.getAttribute('data-theme')
-      const expectedSystemTheme = e.matches ? 'dim' : 'nord'
+      const expectedSystemTheme = e.matches ? 'dim' : 'bumblebee'
       
       if (currentTheme === expectedSystemTheme || !savedTheme) {
         isDark.value = e.matches

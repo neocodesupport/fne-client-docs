@@ -10,26 +10,25 @@
       </div>
       
       <!-- Titre et actions -->
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <h1 class="text-3xl sm:text-4xl font-bold text-base-content">
+      <div class="flex flex-row items-center gap-3 flex-wrap">
+        <h1 class="text-3xl sm:text-4xl font-bold text-base-content flex-1 min-w-0">
           {{ page.title }}
         </h1>
         
-        <!-- Boutons actions -->
-        <div class="flex flex-wrap items-center gap-1.5">
-          <button
-            @click="copyPageUrl"
-            class="btn btn-sm btn-ghost gap-1.5"
-            :class="{ 'btn-success': copied }"
-            :title="copied ? 'Copié !' : 'Copier la page'"
-          >
-            <Icon 
-              :name="copied ? 'heroicons:check' : 'heroicons:clipboard-document'" 
-              class="w-4 h-4" 
-            />
-            <span class="hidden sm:inline">Copier la page</span>
-          </button>
-        </div>
+        <!-- Bouton copy -->
+        <button
+          @click="copyPageUrl"
+          class="btn btn-sm btn-ghost gap-1.5 flex-shrink-0"
+          :class="{ 'btn-success': copied }"
+          :title="copied ? t('code.copied') : t('docs.copy-page-title')"
+        >
+          <Icon 
+            :name="copied ? 'heroicons:check' : 'heroicons:clipboard'" 
+            class="w-4 h-4" 
+          />
+          <span class="hidden sm:inline">{{ copied ? t('code.copied') : t('docs.copy-page') }}</span>
+          <span class="sm:hidden">{{ copied ? t('code.copied') : t('docs.copy-page').split(' ')[0] }}</span>
+        </button>
       </div>
       
       <!-- Description -->
@@ -93,6 +92,8 @@ import type { Collections } from '@nuxt/content'
 const route = useRoute()
 // Utiliser useI18n de @nuxtjs/i18n
 const { locale } = useI18n()
+// Utiliser useAppI18n pour les traductions
+const { t } = useAppI18n()
 const contentRef = ref<HTMLElement | null>(null)
 
 // Construire le slug à partir de la route
