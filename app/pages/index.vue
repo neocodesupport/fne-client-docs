@@ -30,7 +30,7 @@
               <!-- Badge version avec animation -->
               <div class="badge badge-primary badge-lg gap-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 inline-flex items-center">
                 <Icon name="heroicons:sparkles" class="w-4 h-4 animate-spin-slow" />
-                v1.0.0-beta
+                v1.0.0
                 <span class="ml-2 w-2 h-2 rounded-full bg-success animate-pulse"></span>
               </div>
             </div>
