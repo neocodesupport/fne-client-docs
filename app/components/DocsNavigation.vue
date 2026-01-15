@@ -47,7 +47,8 @@ const navigation = computed(() => [
       { titleKey: 'nav.guides.error-handling', path: '/docs/guides/error-handling' },
       { titleKey: 'nav.guides.cache', path: '/docs/guides/cache' },
       { titleKey: 'nav.guides.logging', path: '/docs/guides/logging' },
-      { titleKey: 'nav.guides.i18n', path: '/docs/guides/i18n' }
+      { titleKey: 'nav.guides.i18n', path: '/docs/guides/i18n' },
+      { titleKey: 'nav.guides.certification-storage', path: '/docs/guides/certification-storage' }
     ]
   },
   {
@@ -58,7 +59,9 @@ const navigation = computed(() => [
       { titleKey: 'nav.api.purchase-service', path: '/docs/api-reference/purchase-service' },
       { titleKey: 'nav.api.refund-service', path: '/docs/api-reference/refund-service' },
       { titleKey: 'nav.api.dtos', path: '/docs/api-reference/dtos' },
-      { titleKey: 'nav.api.enums', path: '/docs/api-reference/enums' }
+      { titleKey: 'nav.api.enums', path: '/docs/api-reference/enums' },
+      { titleKey: 'nav.api.certification-storage', path: '/docs/api-reference/certification-storage' },
+      { titleKey: 'nav.api.fne-certification-model', path: '/docs/api-reference/fne-certification-model' }
     ]
   },
   {

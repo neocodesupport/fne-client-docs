@@ -37,6 +37,7 @@ export function useAppI18n() {
         'nav.guides.cache': 'Cache',
         'nav.guides.logging': 'Logging',
         'nav.guides.i18n': 'Internationalization',
+        'nav.guides.certification-storage': 'Certification Storage',
         
         // Navigation items - API Reference
         'nav.api.fne-client': 'FNEClient',
@@ -45,6 +46,8 @@ export function useAppI18n() {
         'nav.api.refund-service': 'RefundService',
         'nav.api.dtos': 'DTOs',
         'nav.api.enums': 'Enums',
+        'nav.api.certification-storage': 'CertificationStorage',
+        'nav.api.fne-certification-model': 'FNECertification Model',
         
         // Navigation items - Examples
         'nav.examples.basic': 'Basic Examples',
@@ -95,6 +98,10 @@ export function useAppI18n() {
         'docs.report-issue': 'Report an issue',
         'docs.copy-page': 'Copy page',
         'docs.copy-page-title': 'Copy page URL',
+        'docs.copy-markdown-page': 'Copy Markdown page',
+        'docs.view-as-markdown': 'View as Markdown',
+        'docs.open-in-chatgpt': 'Open in ChatGPT',
+        'docs.open-in-claude': 'Open in Claude',
         'docs.on-this-page': 'On this page',
         'docs.no-headings': 'No headings available',
         
@@ -194,6 +201,7 @@ export function useAppI18n() {
         'nav.guides.cache': 'Cache',
         'nav.guides.logging': 'Logging',
         'nav.guides.i18n': 'Internationalisation',
+        'nav.guides.certification-storage': 'Enregistrement automatique',
         
         // Navigation items - API Reference
         'nav.api.fne-client': 'FNEClient',
@@ -202,6 +210,8 @@ export function useAppI18n() {
         'nav.api.refund-service': 'RefundService',
         'nav.api.dtos': 'DTOs',
         'nav.api.enums': 'Enums',
+        'nav.api.certification-storage': 'CertificationStorage',
+        'nav.api.fne-certification-model': 'Modèle FNECertification',
         
         // Navigation items - Examples
         'nav.examples.basic': 'Exemples basiques',
@@ -252,6 +262,10 @@ export function useAppI18n() {
         'docs.report-issue': 'Signaler un problème',
         'docs.copy-page': 'Copier la page',
         'docs.copy-page-title': 'Copier l\'URL de la page',
+        'docs.copy-markdown-page': 'Copier la page Markdown',
+        'docs.view-as-markdown': 'Voir en Markdown',
+        'docs.open-in-chatgpt': 'Ouvrir dans ChatGPT',
+        'docs.open-in-claude': 'Ouvrir dans Claude',
         'docs.on-this-page': 'Sur cette page',
         'docs.no-headings': 'Aucun titre disponible',
         
