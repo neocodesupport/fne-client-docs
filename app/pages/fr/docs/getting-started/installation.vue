@@ -2,13 +2,10 @@
   <DocPage
     title="Installation"
     description="Guide d'installation de FNE Client pour Laravel, Symfony et PHP natif"
+    sub-description="FNE Client peut être installé dans votre projet PHP en quelques minutes, quel que soit votre framework."
     section="Démarrage"
+    heading-id="installation"
   >
-    <DocHeading :level="1" id="installation">Installation</DocHeading>
-    
-    <DocParagraph>
-      FNE Client peut être installé dans votre projet PHP en quelques minutes, quel que soit votre framework.
-    </DocParagraph>
 
     <DocHeading :level="2" id="prerequisites">Prérequis</DocHeading>
 

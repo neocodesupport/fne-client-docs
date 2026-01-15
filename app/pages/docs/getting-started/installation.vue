@@ -2,13 +2,10 @@
   <DocPage
     title="Installation"
     description="Installation guide for FNE Client for Laravel, Symfony and native PHP"
+    sub-description="FNE Client can be installed in your PHP project in just a few minutes, regardless of your framework."
     section="Getting Started"
+    heading-id="installation"
   >
-    <DocHeading :level="1" id="installation">Installation</DocHeading>
-    
-    <DocParagraph>
-      FNE Client can be installed in your PHP project in just a few minutes, regardless of your framework.
-    </DocParagraph>
 
     <DocHeading :level="2" id="prerequisites">Prerequisites</DocHeading>
 
@@ -27,7 +24,7 @@
       language="bash"
       :code="`composer require neocode/fne-client
 php artisan fne:install`"
-      :show-line-numbers="false"
+      :show-line-numbers="true"
     />
 
     <DocParagraph>

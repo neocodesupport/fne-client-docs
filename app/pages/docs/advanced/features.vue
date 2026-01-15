@@ -2,13 +2,10 @@
   <DocPage
     title="Features (Laravel Pennant)"
     description="Guide for using Laravel Pennant features with FNE Client"
+    sub-description="FNE Client uses Laravel Pennant to manage modules in a modular way."
     section="Advanced"
+    heading-id="features"
   >
-    <DocHeading :level="1" id="features">Features (Laravel Pennant)</DocHeading>
-    
-    <DocParagraph>
-      FNE Client uses Laravel Pennant to manage modules in a modular way.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

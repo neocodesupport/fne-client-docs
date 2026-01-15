@@ -2,13 +2,10 @@
   <DocPage
     title="Introduction"
     description="Discover FNE Client, the PHP SDK for integrating the FNE API into your applications"
+    sub-description="Welcome to the <strong>FNE Client</strong> documentation, the framework-agnostic PHP SDK for integrating the FNE (Facture Normalisée Électronique) API."
     section="Getting Started"
+    heading-id="introduction"
   >
-    <DocHeading :level="1" id="introduction">Introduction</DocHeading>
-    
-    <DocParagraph>
-      Welcome to the <strong>FNE Client</strong> documentation, the framework-agnostic PHP SDK for integrating the FNE (Facture Normalisée Électronique) API.
-    </DocParagraph>
 
     <DocHeading :level="2" id="what-is-fne-client">What is FNE Client?</DocHeading>
 

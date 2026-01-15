@@ -2,13 +2,10 @@
   <DocPage
     title="Configuration"
     description="Configuration guide for FNE Client for your environment"
+    sub-description="Once FNE Client is installed, you need to configure it for your environment. Configuration can be done via environment variables or a configuration file."
     section="Getting Started"
+    heading-id="configuration"
   >
-    <DocHeading :level="1" id="configuration">Configuration</DocHeading>
-    
-    <DocParagraph>
-      Once FNE Client is installed, you need to configure it for your environment. Configuration can be done via environment variables or a configuration file.
-    </DocParagraph>
 
     <DocHeading :level="2" id="environment-variables">Environment Variables</DocHeading>
 
