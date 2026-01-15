@@ -21,36 +21,28 @@ Pour créer un avoir, vous devez avoir sauvegardé :
 
 Ces UUIDs sont retournés dans la réponse lors de la certification de la facture originale.
 
-### Exemple de sauvegarde
+### Enregistrement automatique
+
+FNE Client peut automatiquement enregistrer les certifications dans la table `fne_certifications` :
 
 ```php
-// Lors de la certification de la facture originale
-$result = FNE::invoice()->sign($data);
+use Neocode\FNE\Concerns\CertifiableInvoice;
 
-if ($result->invoice) {
-    $invoice = $result->invoice;
-    
-    // Sauvegarder l'UUID de la facture
-    DB::table('fne_certifications')->insert([
-        'fne_invoice_id' => $invoice->id, // UUID FNE
-        'reference' => $invoice->reference,
-        'amount' => $invoice->amount / 100,
-        'created_at' => now(),
-    ]);
-    
-    // Sauvegarder les UUIDs des items
-    foreach ($invoice->items as $item) {
-        DB::table('fne_invoice_items')->insert([
-            'fne_item_id' => $item->id, // UUID de l'item
-            'fne_invoice_id' => $invoice->id,
-            'description' => $item->description,
-            'quantity' => $item->quantity,
-            'amount' => $item->amount / 100,
-            'created_at' => now(),
-        ]);
-    }
+class Invoice extends Model
+{
+    use CertifiableInvoice;
 }
+
+// Certification avec enregistrement automatique
+$invoice = Invoice::find(1);
+$response = $invoice->certify(); // Enregistre automatiquement si activé
+
+// Récupérer l'UUID depuis la table pour créer un avoir
+$certification = \Neocode\FNE\Models\FNECertification::where('reference', $response->reference)->first();
+$fneInvoiceId = $certification->fne_invoice_id; // UUID pour créer l'avoir
 ```
+
+Pour plus d'informations, consultez le guide [Enregistrement automatique des certifications](/docs/guides/certification-storage).
 
 ## Créer un avoir complet
 

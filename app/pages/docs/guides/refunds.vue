@@ -2,13 +2,10 @@
   <DocPage
     title="Refunds"
     description="Complete guide for creating refunds with FNE Client"
+    sub-description="This guide shows you how to create refunds for your certified invoices with FNE Client."
     section="Guides"
+    heading-id="refunds"
   >
-    <DocHeading :level="1" id="refunds">Refunds</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to create refunds for your certified invoices with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 
@@ -26,12 +23,33 @@
       These UUIDs are returned in the response when certifying the original invoice.
     </DocAlert>
 
-    <DocHeading :level="3" id="save-example">Save Example</DocHeading>
+    <DocHeading :level="3" id="automatic-storage">Automatic Storage</DocHeading>
+
+    <DocParagraph>
+      FNE Client can automatically store certifications in the <DocInlineCode>fne_certifications</DocInlineCode> table:
+    </DocParagraph>
 
     <DocCode
       language="php"
-      :code="saveExampleCode"
+      :code="`use Neocode\\FNE\\Concerns\\CertifiableInvoice;
+
+class Invoice extends Model
+{
+    use CertifiableInvoice;
+}
+
+// Certification with automatic storage
+\$invoice = Invoice::find(1);
+\$response = \$invoice->certify(); // Automatically stores if enabled
+
+// Retrieve UUID from table to create refund
+\$certification = \\Neocode\\FNE\\Models\\FNECertification::where(\\'reference\\', \$response->reference)->first();
+\$fneInvoiceId = \$certification->fne_invoice_id; // UUID to create refund`"
     />
+
+    <DocParagraph>
+      For more information, see the <NuxtLink to="/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">Automatic Certification Storage</NuxtLink> guide.
+    </DocParagraph>
 
     <DocHeading :level="2" id="full-refund">Create a Full Refund</DocHeading>
 
@@ -95,7 +113,7 @@
 
     <DocList ordered>
       <DocListItem>
-        <strong>Always save UUIDs</strong>: When certifying an invoice, always save the invoice UUID and item UUIDs
+        <strong>Always save UUIDs</strong>: When certifying an invoice, always save the invoice UUID and item UUIDs. Use <NuxtLink to="/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">automatic storage</NuxtLink> for convenience.
       </DocListItem>
       <DocListItem>
         <strong>Check quantities</strong>: Ensure the refunded quantity does not exceed the original quantity
@@ -118,6 +136,11 @@
     <DocHeading :level="2" id="next-steps">Next Steps</DocHeading>
 
     <DocList>
+      <DocListItem>
+        <NuxtLink to="/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">
+          Automatic Certification Storage
+        </NuxtLink> - Store certifications automatically
+      </DocListItem>
       <DocListItem>
         <NuxtLink to="/docs/guides/error-handling" class="text-primary border-b border-transparent hover:border-primary font-medium">
           Error Handling
@@ -164,47 +187,20 @@ definePageMeta({
 })
 
 // Code blocks
-const saveExampleCode = `// When certifying the original invoice
-$result = FNE::invoice()->sign($data);
-
-if ($result->invoice) {
-    $invoice = $result->invoice;
-    
-    // Save the invoice UUID
-    DB::table('fne_certifications')->insert([
-        'fne_invoice_id' => $invoice->id, // FNE UUID
-        'reference' => $invoice->reference,
-        'amount' => $invoice->amount / 100,
-        'created_at' => now(),
-    ]);
-    
-    // Save item UUIDs
-    foreach ($invoice->items as $item) {
-        DB::table('fne_invoice_items')->insert([
-            'fne_item_id' => $item->id, // Item UUID
-            'fne_invoice_id' => $invoice->id,
-            'description' => $item->description,
-            'quantity' => $item->quantity,
-            'amount' => $item->amount / 100,
-            'created_at' => now(),
-        ]);
-    }
-}`
-
 const fullRefundCode = `use Neocode\\FNE\\Facades\\FNE;
 
 // Original invoice UUID (retrieved from your database)
-$invoiceId = 'e2b2d8da-a532-4c08-9182-f5b428ca468d';
+$invoiceId = \\'e2b2d8da-a532-4c08-9182-f5b428ca468d\\';
 
 // UUIDs of all items (retrieved from your database)
 $items = [
     [
-        'id' => 'bf9cc241-9b5f-4d26-a570-aa8e682a759e', // Item UUID
-        'quantity' => 30.0, // Quantity to refund
+        \\'id\\' => \\'bf9cc241-9b5f-4d26-a570-aa8e682a759e\\', // Item UUID
+        \\'quantity\\' => 30.0, // Quantity to refund
     ],
     [
-        'id' => 'another-item-uuid',
-        'quantity' => 10.0,
+        \\'id\\' => \\'another-item-uuid\\',
+        \\'quantity\\' => 10.0,
     ],
 ];
 
@@ -222,8 +218,8 @@ echo $result->balanceSticker;    // Number of remaining stickers
 const partialRefundCode = `// Refund only certain items
 $items = [
     [
-        'id' => 'bf9cc241-9b5f-4d26-a570-aa8e682a759e',
-        'quantity' => 10.0, // Refund only 10 out of 30
+        \\'id\\' => \\'bf9cc241-9b5f-4d26-a570-aa8e682a759e\\',
+        \\'quantity\\' => 10.0, // Refund only 10 out of 30
     ],
 ];
 
@@ -250,7 +246,7 @@ const checkRefundCode = `if ($result->isRefund()) {
 }
 
 // Or check manually
-if (str_starts_with($result->reference, 'A')) {
+if (str_starts_with($result->reference, \\'A\\')) {
     echo "This is a refund";
 }`
 
@@ -271,8 +267,8 @@ class Invoice extends Model
 $invoice = Invoice::find(1);
 $items = [
     [
-        'id' => 'item-uuid-1',
-        'quantity' => 10.0,
+        \\'id\\' => \\'item-uuid-1\\',
+        \\'quantity\\' => 10.0,
     ],
 ];
 
@@ -294,40 +290,37 @@ try {
     echo "Error: " . $e->getMessage();
 }`
 
-const completeExampleCode = `// 1. Certify an original invoice
-$invoiceResult = FNE::invoice()->sign($invoiceData);
+const completeExampleCode = `use Neocode\\FNE\\Concerns\\CertifiableInvoice;
+use Neocode\\FNE\\Models\\FNECertification;
 
-// 2. Save UUIDs
-$invoiceId = $invoiceResult->invoice->id;
+// 1. Certify an original invoice with automatic storage
+$invoice = Invoice::find(1);
+$invoiceResult = $invoice->certify(); // Automatically stores if enabled
+
+// 2. Retrieve UUIDs from the certification table
+$certification = FNECertification::where(\\'reference\\', $invoiceResult->reference)->first();
+$invoiceId = $certification->fne_invoice_id;
+
+// Get item UUIDs from the original invoice response
 $itemIds = array_map(fn($item) => $item->id, $invoiceResult->invoice->items);
-
-DB::table('fne_certifications')->insert([
-    'fne_invoice_id' => $invoiceId,
-    'reference' => $invoiceResult->reference,
-    'created_at' => now(),
-]);
 
 // 3. Later, create a refund
 $refundItems = [
     [
-        'id' => $itemIds[0], // First item
-        'quantity' => 5.0, // Refund 5 units
+        \\'id\\' => $itemIds[0], // First item
+        \\'quantity\\' => 5.0, // Refund 5 units
     ],
 ];
 
 $refundResult = FNE::refund()->issue($invoiceId, $refundItems);
 
-// 4. Save the refund
-DB::table('fne_refunds')->insert([
-    'fne_invoice_id' => $invoiceId,
-    'reference' => $refundResult->reference, // Starts with "A"
-    'created_at' => now(),
-]);`
+// 4. The refund reference starts with "A"
+echo $refundResult->reference; // "A9606123E2500000006"`
 
 const headings = ref([
   { id: 'refunds', text: 'Refunds', depth: 1 },
   { id: 'overview', text: 'Overview', depth: 2 },
-  { id: 'save-example', text: 'Save Example', depth: 3 },
+  { id: 'automatic-storage', text: 'Automatic Storage', depth: 3 },
   { id: 'full-refund', text: 'Create a Full Refund', depth: 2 },
   { id: 'partial-refund', text: 'Create a Partial Refund', depth: 2 },
   { id: 'response-structure', text: 'Response Structure', depth: 2 },

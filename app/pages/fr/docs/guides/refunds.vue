@@ -2,13 +2,10 @@
   <DocPage
     title="Avoirs"
     description="Guide complet pour créer des avoirs (remboursements) avec FNE Client"
+    sub-description="Ce guide vous montre comment créer des avoirs (remboursements) pour vos factures certifiées avec FNE Client."
     section="Guides"
+    heading-id="refunds"
   >
-    <DocHeading :level="1" id="refunds">Avoirs</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment créer des avoirs (remboursements) pour vos factures certifiées avec FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 
@@ -26,12 +23,33 @@
       Ces UUIDs sont retournés dans la réponse lors de la certification de la facture originale.
     </DocAlert>
 
-    <DocHeading :level="3" id="save-example">Exemple de sauvegarde</DocHeading>
+    <DocHeading :level="3" id="automatic-storage">Enregistrement automatique</DocHeading>
+
+    <DocParagraph>
+      FNE Client peut automatiquement enregistrer les certifications dans la table <DocInlineCode>fne_certifications</DocInlineCode> :
+    </DocParagraph>
 
     <DocCode
       language="php"
-      :code="saveExampleCode"
+      :code="`use Neocode\\FNE\\Concerns\\CertifiableInvoice;
+
+class Invoice extends Model
+{
+    use CertifiableInvoice;
+}
+
+// Certification avec enregistrement automatique
+\$invoice = Invoice::find(1);
+\$response = \$invoice->certify(); // Enregistre automatiquement si activé
+
+// Récupérer l'UUID depuis la table pour créer un avoir
+\$certification = \\Neocode\\FNE\\Models\\FNECertification::where(\\'reference\\', \$response->reference)->first();
+\$fneInvoiceId = \$certification->fne_invoice_id; // UUID pour créer l'avoir`"
     />
+
+    <DocParagraph>
+      Pour plus d'informations, consultez le guide <NuxtLink to="/fr/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">Enregistrement automatique des certifications</NuxtLink>.
+    </DocParagraph>
 
     <DocHeading :level="2" id="full-refund">Créer un avoir complet</DocHeading>
 
@@ -95,7 +113,7 @@
 
     <DocList ordered>
       <DocListItem>
-        <strong>Sauvegardez toujours les UUIDs</strong> : Lors de la certification d'une facture, sauvegardez toujours l'UUID de la facture et des items
+        <strong>Sauvegardez toujours les UUIDs</strong> : Lors de la certification d'une facture, sauvegardez toujours l'UUID de la facture et des items. Utilisez l'<NuxtLink to="/fr/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">enregistrement automatique</NuxtLink> pour plus de facilité.
       </DocListItem>
       <DocListItem>
         <strong>Vérifiez les quantités</strong> : Assurez-vous que la quantité remboursée ne dépasse pas la quantité originale
@@ -118,6 +136,11 @@
     <DocHeading :level="2" id="next-steps">Prochaines étapes</DocHeading>
 
     <DocList>
+      <DocListItem>
+        <NuxtLink to="/fr/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">
+          Enregistrement automatique des certifications
+        </NuxtLink> - Enregistrer les certifications automatiquement
+      </DocListItem>
       <DocListItem>
         <NuxtLink to="/fr/docs/guides/error-handling" class="text-primary border-b border-transparent hover:border-primary font-medium">
           Gestion des erreurs
@@ -164,47 +187,20 @@ definePageMeta({
 })
 
 // Code blocks
-const saveExampleCode = `// Lors de la certification de la facture originale
-$result = FNE::invoice()->sign($data);
-
-if ($result->invoice) {
-    $invoice = $result->invoice;
-    
-    // Sauvegarder l'UUID de la facture
-    DB::table('fne_certifications')->insert([
-        'fne_invoice_id' => $invoice->id, // UUID FNE
-        'reference' => $invoice->reference,
-        'amount' => $invoice->amount / 100,
-        'created_at' => now(),
-    ]);
-    
-    // Sauvegarder les UUIDs des items
-    foreach ($invoice->items as $item) {
-        DB::table('fne_invoice_items')->insert([
-            'fne_item_id' => $item->id, // UUID de l'item
-            'fne_invoice_id' => $invoice->id,
-            'description' => $item->description,
-            'quantity' => $item->quantity,
-            'amount' => $item->amount / 100,
-            'created_at' => now(),
-        ]);
-    }
-}`
-
 const fullRefundCode = `use Neocode\\FNE\\Facades\\FNE;
 
 // UUID de la facture originale (récupéré depuis votre base de données)
-$invoiceId = 'e2b2d8da-a532-4c08-9182-f5b428ca468d';
+$invoiceId = \\'e2b2d8da-a532-4c08-9182-f5b428ca468d\\';
 
 // UUIDs de tous les items (récupérés depuis votre base de données)
 $items = [
     [
-        'id' => 'bf9cc241-9b5f-4d26-a570-aa8e682a759e', // UUID de l'item
-        'quantity' => 30.0, // Quantité à rembourser
+        \\'id\\' => \\'bf9cc241-9b5f-4d26-a570-aa8e682a759e\\', // UUID de l'item
+        \\'quantity\\' => 30.0, // Quantité à rembourser
     ],
     [
-        'id' => 'another-item-uuid',
-        'quantity' => 10.0,
+        \\'id\\' => \\'another-item-uuid\\',
+        \\'quantity\\' => 10.0,
     ],
 ];
 
@@ -222,8 +218,8 @@ echo $result->balanceSticker;    // Nombre de stickers restants
 const partialRefundCode = `// Rembourser seulement certains items
 $items = [
     [
-        'id' => 'bf9cc241-9b5f-4d26-a570-aa8e682a759e',
-        'quantity' => 10.0, // Rembourser seulement 10 sur 30
+        \\'id\\' => \\'bf9cc241-9b5f-4d26-a570-aa8e682a759e\\',
+        \\'quantity\\' => 10.0, // Rembourser seulement 10 sur 30
     ],
 ];
 
@@ -250,7 +246,7 @@ const checkRefundCode = `if ($result->isRefund()) {
 }
 
 // Ou vérifier manuellement
-if (str_starts_with($result->reference, 'A')) {
+if (str_starts_with($result->reference, \\'A\\')) {
     echo "C'est un avoir";
 }`
 
@@ -271,8 +267,8 @@ class Invoice extends Model
 $invoice = Invoice::find(1);
 $items = [
     [
-        'id' => 'item-uuid-1',
-        'quantity' => 10.0,
+        \\'id\\' => \\'item-uuid-1\\',
+        \\'quantity\\' => 10.0,
     ],
 ];
 
@@ -294,40 +290,37 @@ try {
     echo "Erreur : " . $e->getMessage();
 }`
 
-const completeExampleCode = `// 1. Certifier une facture originale
-$invoiceResult = FNE::invoice()->sign($invoiceData);
+const completeExampleCode = `use Neocode\\FNE\\Concerns\\CertifiableInvoice;
+use Neocode\\FNE\\Models\\FNECertification;
 
-// 2. Sauvegarder les UUIDs
-$invoiceId = $invoiceResult->invoice->id;
+// 1. Certifier une facture originale avec enregistrement automatique
+$invoice = Invoice::find(1);
+$invoiceResult = $invoice->certify(); // Enregistre automatiquement si activé
+
+// 2. Récupérer les UUIDs depuis la table de certification
+$certification = FNECertification::where(\\'reference\\', $invoiceResult->reference)->first();
+$invoiceId = $certification->fne_invoice_id;
+
+// Obtenir les UUIDs des items depuis la réponse de la facture originale
 $itemIds = array_map(fn($item) => $item->id, $invoiceResult->invoice->items);
-
-DB::table('fne_certifications')->insert([
-    'fne_invoice_id' => $invoiceId,
-    'reference' => $invoiceResult->reference,
-    'created_at' => now(),
-]);
 
 // 3. Plus tard, créer un avoir
 $refundItems = [
     [
-        'id' => $itemIds[0], // Premier item
-        'quantity' => 5.0, // Rembourser 5 unités
+        \\'id\\' => $itemIds[0], // Premier item
+        \\'quantity\\' => 5.0, // Rembourser 5 unités
     ],
 ];
 
 $refundResult = FNE::refund()->issue($invoiceId, $refundItems);
 
-// 4. Sauvegarder l'avoir
-DB::table('fne_refunds')->insert([
-    'fne_invoice_id' => $invoiceId,
-    'reference' => $refundResult->reference, // Commence par "A"
-    'created_at' => now(),
-]);`
+// 4. La référence de l'avoir commence par "A"
+echo $refundResult->reference; // "A9606123E2500000006"`
 
 const headings = ref([
   { id: 'refunds', text: 'Avoirs', depth: 1 },
   { id: 'overview', text: 'Vue d\'ensemble', depth: 2 },
-  { id: 'save-example', text: 'Exemple de sauvegarde', depth: 3 },
+  { id: 'automatic-storage', text: 'Enregistrement automatique', depth: 3 },
   { id: 'full-refund', text: 'Créer un avoir complet', depth: 2 },
   { id: 'partial-refund', text: 'Créer un avoir partiel', depth: 2 },
   { id: 'response-structure', text: 'Structure de la réponse', depth: 2 },

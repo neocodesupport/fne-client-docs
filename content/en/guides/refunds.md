@@ -20,36 +20,28 @@ A refund is a document that cancels or reduces the amount of a previously certif
 > 
 > These UUIDs are returned in the response when certifying the original invoice.
 
-### Save Example
+### Automatic Storage
+
+FNE Client can automatically store certifications in the `fne_certifications` table:
 
 ```php
-// When certifying the original invoice
-$result = FNE::invoice()->sign($data);
+use Neocode\FNE\Concerns\CertifiableInvoice;
 
-if ($result->invoice) {
-    $invoice = $result->invoice;
-    
-    // Save the invoice UUID
-    DB::table('fne_certifications')->insert([
-        'fne_invoice_id' => $invoice->id, // FNE UUID
-        'reference' => $invoice->reference,
-        'amount' => $invoice->amount / 100,
-        'created_at' => now(),
-    ]);
-    
-    // Save item UUIDs
-    foreach ($invoice->items as $item) {
-        DB::table('fne_invoice_items')->insert([
-            'fne_item_id' => $item->id, // Item UUID
-            'fne_invoice_id' => $invoice->id,
-            'description' => $item->description,
-            'quantity' => $item->quantity,
-            'amount' => $item->amount / 100,
-            'created_at' => now(),
-        ]);
-    }
+class Invoice extends Model
+{
+    use CertifiableInvoice;
 }
+
+// Certification with automatic storage
+$invoice = Invoice::find(1);
+$response = $invoice->certify(); // Automatically stores if enabled
+
+// Retrieve UUID from table to create refund
+$certification = \Neocode\FNE\Models\FNECertification::where('reference', $response->reference)->first();
+$fneInvoiceId = $certification->fne_invoice_id; // UUID to create refund
 ```
+
+For more information, see the [Automatic Certification Storage](/docs/guides/certification-storage) guide.
 
 ## Create a Full Refund
 
