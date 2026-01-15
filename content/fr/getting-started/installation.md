@@ -135,6 +135,28 @@ $config = new FNEConfig([
 $fne = new FNEClient(/* ... */);
 ```
 
+## Migration de la table fne_certifications (Optionnel)
+
+Si vous souhaitez utiliser l'enregistrement automatique des certifications, vous devez créer la table `fne_certifications` :
+
+### Laravel
+
+```bash
+php artisan migrate
+```
+
+La migration est automatiquement publiée lors de l'installation.
+
+### Symfony
+
+Utilisez le fichier SQL fourni dans `vendor/neocode/fne-client/database/migrations/2024_01_01_000000_create_fne_certifications_table.sql`.
+
+### PHP Natif
+
+Utilisez le fichier SQL fourni avec votre système de gestion de base de données.
+
+Pour plus d'informations, consultez le guide [Enregistrement automatique des certifications](/docs/guides/certification-storage).
+
 ## Prochaines étapes
 
 Une fois l'installation terminée :

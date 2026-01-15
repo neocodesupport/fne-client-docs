@@ -21,6 +21,7 @@ Le système de features permet d'activer/désactiver des fonctionnalités de man
     'advanced_mapping' => true,
     'batch_processing' => false,
     'webhooks' => false,
+    'certification_table' => env('FNE_FEATURE_CERTIFICATION_TABLE', false),
 ],
 ```
 
@@ -33,6 +34,28 @@ if (Feature::active('fne:advanced-mapping')) {
     // Utiliser le mapping avancé
 }
 ```
+
+## Feature : certification-table
+
+Cette feature active l'enregistrement automatique des certifications dans la table `fne_certifications`.
+
+### Activation
+
+```php
+use Laravel\Pennant\Feature;
+
+Feature::for($user)->activate('fne:certification-table');
+```
+
+### Utilisation
+
+```php
+if (Feature::active('fne:certification-table')) {
+    // L'enregistrement automatique est activé
+}
+```
+
+Pour plus d'informations, consultez le guide [Enregistrement automatique des certifications](/docs/guides/certification-storage).
 
 ## Voir aussi
 

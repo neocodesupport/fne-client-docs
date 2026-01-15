@@ -19,6 +19,7 @@ FNE Client est un SDK PHP moderne et intuitif qui simplifie l'intégration de l'
 - **Mapping Flexible** : Transformation de vos données ERP vers FNE avec notation pointée
 - **Intégration Modèles** : Traits pour intégration directe avec vos modèles
 - **Validation Robuste** : Validation automatique avant envoi à l'API
+- **Enregistrement automatique** : Sauvegarde automatique des certifications dans la base de données
 - **Production Ready** : 67 tests, gestion d'erreurs complète
 
 ## Pourquoi utiliser FNE Client ?

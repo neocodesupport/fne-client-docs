@@ -44,6 +44,7 @@ FNE_FEATURES_ENABLED=true
 FNE_FEATURE_ADVANCED_MAPPING=true
 FNE_FEATURE_BATCH_PROCESSING=false
 FNE_FEATURE_WEBHOOKS=false
+FNE_FEATURE_CERTIFICATION_TABLE=false  # Enable automatic storage
 ```
 
 ## Configuration File
@@ -90,6 +91,7 @@ return [
         'advanced_mapping' => env('FNE_FEATURE_ADVANCED_MAPPING', true),
         'batch_processing' => env('FNE_FEATURE_BATCH_PROCESSING', false),
         'webhooks' => env('FNE_FEATURE_WEBHOOKS', false),
+        'certification_table' => env('FNE_FEATURE_CERTIFICATION_TABLE', false),
     ],
 ];
 ```

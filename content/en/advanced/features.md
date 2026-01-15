@@ -20,6 +20,7 @@ The features system allows enabling/disabling functionality flexibly.
     'advanced_mapping' => true,
     'batch_processing' => false,
     'webhooks' => false,
+    'certification_table' => env('FNE_FEATURE_CERTIFICATION_TABLE', false),
 ],
 ```
 
@@ -32,6 +33,28 @@ if (Feature::active('fne:advanced-mapping')) {
     // Use advanced mapping
 }
 ```
+
+## Feature: certification-table
+
+This feature enables automatic storage of certifications in the `fne_certifications` table.
+
+### Activation
+
+```php
+use Laravel\Pennant\Feature;
+
+Feature::for($user)->activate('fne:certification-table');
+```
+
+### Usage
+
+```php
+if (Feature::active('fne:certification-table')) {
+    // Automatic storage is enabled
+}
+```
+
+For more information, see the [Automatic Certification Storage](/docs/guides/certification-storage) guide.
 
 ## See Also
 
