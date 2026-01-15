@@ -19,7 +19,7 @@
 
       <!-- Colonne 2 : Contenu principal (centre) - 100% largeur sur mobile -->
       <main class="flex-1 w-full md:p-8">
-        <div class="max-w-4xl mx-auto w-full">
+        <div class="max-w-[var(--ui-content-width)] mx-auto w-full">
           <!-- Contenu markdown avec font-size réduite pour mobile -->
           <article class="prose prose-sm md:prose-base lg:prose-lg max-w-none prose-headings:font-bold prose-headings:text-base-content prose-p:text-base-content/80 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-code:text-primary prose-code:bg-base-200 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-base-300">
             <slot />
@@ -29,17 +29,8 @@
           <div class="flex flex-col sm:flex-row items-center justify-center my-8 gap-2">
             <div class="border-t border-base-300 w-full"></div>
             <div class="flex flex-wrap items-center justify-center gap-2 px-3 text-xs sm:text-sm text-base-content/60">
-              <a 
-                :href="editPageUrl" 
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-sm btn-ghost gap-1.5 text-base-content/60 hover:text-base-content whitespace-nowrap"
-              >
-                <Icon name="heroicons:pencil" class="w-4 h-4" />
-                <span class="hidden sm:inline">{{ t('docs.edit-page') }}</span>
-                <span class="sm:hidden">{{ t('docs.edit-page').split(' ')[0] }}</span>
-              </a>
-              <span class="hidden sm:inline">or</span>
+              <slot name="page-actions">
+                <!-- Par défaut, afficher le bouton Report Issue si aucune page n'injecte d'actions -->
               <a 
                 :href="reportIssueUrl" 
                 target="_blank"
@@ -50,6 +41,7 @@
                 <span class="hidden sm:inline">{{ t('docs.report-issue') }}</span>
                 <span class="sm:hidden">{{ t('docs.report-issue').split(' ')[0] }}</span>
               </a>
+              </slot>
             </div>
             <div class="border-t border-base-300 w-full"></div>
           </div>

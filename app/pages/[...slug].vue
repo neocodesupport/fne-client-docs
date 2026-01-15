@@ -1,6 +1,6 @@
 <template>
-  <!-- Fallback uniquement si aucune page Vue n'existe -->
-  <div v-if="!hasVuePage">
+  <!-- Fallback pour les pages markdown sans fichier Vue spécifique -->
+  <div>
     <!-- Header de page style Laravel Zap -->
     <div v-if="page" class="relative border-b border-base-300 pb-8 mb-8">
       <!-- Breadcrumb -->
@@ -15,20 +15,8 @@
           {{ page.title }}
         </h1>
         
-        <!-- Bouton copy -->
-        <button
-          @click="copyPageUrl"
-          class="btn btn-sm btn-ghost gap-1.5 flex-shrink-0"
-          :class="{ 'btn-success': copied }"
-          :title="copied ? t('code.copied') : t('docs.copy-page-title')"
-        >
-          <Icon 
-            :name="copied ? 'heroicons:check' : 'heroicons:clipboard'" 
-            class="w-4 h-4" 
-          />
-          <span class="hidden sm:inline">{{ copied ? t('code.copied') : t('docs.copy-page') }}</span>
-          <span class="sm:hidden">{{ copied ? t('code.copied') : t('docs.copy-page').split(' ')[0] }}</span>
-        </button>
+        <!-- Page Actions Dropdown -->
+        <PageActionsDropdown />
       </div>
       
       <!-- Description -->
@@ -449,17 +437,7 @@ const sectionName = computed(() => {
   return null
 })
 
-// Copier l'URL de la page
-const copied = ref(false)
-const copyPageUrl = () => {
-  const url = window.location.href
-  navigator.clipboard.writeText(url).then(() => {
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  })
-}
+// Note: copyPageUrl supprimé, maintenant géré par PageActionsDropdown
 
 // Fournir les données aux composants enfants via useDocsPage
 const { setPrevPage, setNextPage, setHeadings } = useDocsPage()

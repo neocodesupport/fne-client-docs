@@ -10,30 +10,20 @@
       
       <!-- Titre et actions -->
       <div class="flex flex-row items-center gap-3 flex-wrap">
-        <h1 class="text-3xl sm:text-4xl font-bold text-base-content flex-1 min-w-0">
+        <h1 class="text-3xl sm:text-4xl font-bold text-base-content flex-1 min-w-0" :level="1" :id="headingId">
           {{ title }}
         </h1>
         
-        <!-- Bouton copy -->
-        <button
-          @click="copyPageUrl"
-          class="btn btn-sm btn-ghost gap-1.5 flex-shrink-0"
-          :class="{ 'btn-success': copied }"
-          :title="copied ? t('code.copied') : t('docs.copy-page-title')"
-        >
-          <Icon 
-            :name="copied ? 'heroicons:check' : 'heroicons:clipboard'" 
-            class="w-4 h-4" 
-          />
-          <span class="hidden sm:inline">{{ copied ? t('code.copied') : t('docs.copy-page') }}</span>
-          <span class="sm:hidden">{{ copied ? t('code.copied') : t('docs.copy-page').split(' ')[0] }}</span>
-        </button>
+        <!-- Page Actions Dropdown -->
+        <PageActionsDropdown />
       </div>
       
       <!-- Description -->
       <p v-if="description" class="text-lg text-base-content/70 mt-4">
         {{ description }}
       </p>
+      <!-- DocParagraph avec subDescription généré automatiquement -->
+      <p v-if="subDescription" class="my-5 leading-7 text-pretty" v-html="subDescription" />
     </div>
     
     <!-- Contenu -->
@@ -44,27 +34,34 @@
 </template>
 
 <script setup lang="ts">
+import DocHeading from './DocHeading.vue'
+import DocParagraph from './DocParagraph.vue'
+import PageActionsDropdown from '~/components/PageActionsDropdown.vue'
+
 interface Props {
   title: string
   description?: string
+  subDescription?: string
   section?: string
+  headingId?: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const route = useRoute()
 const { t } = useAppI18n()
-const copied = ref(false)
 
-const copyPageUrl = () => {
-  const url = window.location.href
-  navigator.clipboard.writeText(url).then(() => {
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  })
-}
+// Générer l'id du heading à partir du titre si non fourni
+const headingId = computed(() => {
+  if (props.headingId) {
+    return props.headingId
+  }
+  // Convertir le titre en slug pour l'id
+  return props.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+})
 </script>
 
 
