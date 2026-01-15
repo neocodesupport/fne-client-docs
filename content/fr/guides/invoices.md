@@ -281,6 +281,23 @@ $result = $invoice->certify([
 ]);
 ```
 
+## Enregistrement automatique
+
+Le trait `CertifiableInvoice` peut automatiquement enregistrer les certifications dans la table `fne_certifications` :
+
+```php
+// Activer via la configuration
+// config/fne.php
+'features' => [
+    'certification_table' => true,
+],
+
+// Ou forcer l'enregistrement
+$response = $invoice->certify(null, true);
+```
+
+Pour plus d'informations, consultez le guide [Enregistrement automatique des certifications](/docs/guides/certification-storage).
+
 ## Prochaines étapes
 
 - **[Bordereaux d'achat](/docs/guides/purchases)** - Certifiez des bordereaux d'achat

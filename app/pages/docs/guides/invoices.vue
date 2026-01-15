@@ -2,13 +2,10 @@
   <DocPage
     title="Sales Invoices"
     description="Complete guide for certifying sales invoices with FNE Client"
+    sub-description="This guide shows you how to certify sales invoices with FNE Client."
     section="Guides"
+    heading-id="invoices"
   >
-    <DocHeading :level="1" id="invoices">Sales Invoices</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to certify sales invoices with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 
@@ -327,6 +324,28 @@ $result = $invoice->certify([
 ]);`"
     />
 
+    <DocHeading :level="2" id="automatic-storage">Automatic Storage</DocHeading>
+
+    <DocParagraph>
+      The <DocInlineCode>CertifiableInvoice</DocInlineCode> trait can automatically store certifications in the <DocInlineCode>fne_certifications</DocInlineCode> table:
+    </DocParagraph>
+
+    <DocCode
+      language="php"
+      :code="`// Enable via configuration
+// config/fne.php
+'features' => [
+    'certification_table' => true,
+],
+
+// Or force storage
+$response = $invoice->certify(null, true);`"
+    />
+
+    <DocParagraph>
+      For more information, see the <NuxtLink to="/docs/guides/certification-storage" class="text-primary border-b border-transparent hover:border-primary font-medium">Automatic Certification Storage</NuxtLink> guide.
+    </DocParagraph>
+
     <DocHeading :level="2" id="next-steps">Next Steps</DocHeading>
 
     <DocList>
@@ -394,6 +413,7 @@ const headings = ref([
   { id: 'rne', text: 'RNE (Normal Business Regime)', depth: 2 },
   { id: 'response-handling', text: 'Response Handling', depth: 2 },
   { id: 'model-integration', text: 'Model Integration', depth: 2 },
+  { id: 'automatic-storage', text: 'Automatic Storage', depth: 2 },
   { id: 'next-steps', text: 'Next Steps', depth: 2 },
 ])
 

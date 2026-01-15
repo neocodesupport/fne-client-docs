@@ -280,6 +280,23 @@ $result = $invoice->certify([
 ]);
 ```
 
+## Automatic Storage
+
+The `CertifiableInvoice` trait can automatically store certifications in the `fne_certifications` table:
+
+```php
+// Enable via configuration
+// config/fne.php
+'features' => [
+    'certification_table' => true,
+],
+
+// Or force storage
+$response = $invoice->certify(null, true);
+```
+
+For more information, see the [Automatic Certification Storage](/docs/guides/certification-storage) guide.
+
 ## Next Steps
 
 - [Purchase Slips](/docs/guides/purchases) - Certify purchase slips
