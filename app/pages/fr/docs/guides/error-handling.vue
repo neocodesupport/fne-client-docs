@@ -2,13 +2,10 @@
   <DocPage
     title="Gestion des erreurs"
     description="Guide complet pour gérer les erreurs avec FNE Client"
+    sub-description="Ce guide vous montre comment gérer les erreurs avec FNE Client de manière efficace."
     section="Guides"
+    heading-id="error-handling"
   >
-    <DocHeading :level="1" id="error-handling">Gestion des erreurs</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment gérer les erreurs avec FNE Client de manière efficace.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 

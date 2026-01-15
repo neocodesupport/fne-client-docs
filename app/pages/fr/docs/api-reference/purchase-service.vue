@@ -2,13 +2,10 @@
   <DocPage
     title="PurchaseService"
     description="Référence API pour le service de bordereaux d'achat"
+    sub-description="Le service <code>PurchaseService</code> gère la certification des bordereaux d'achat."
     section="Référence API"
+    heading-id="purchase-service"
   >
-    <DocHeading :level="1" id="purchase-service">PurchaseService</DocHeading>
-    
-    <DocParagraph>
-      Le service <DocInlineCode>PurchaseService</DocInlineCode> gère la certification des bordereaux d'achat.
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Méthodes</DocHeading>
 

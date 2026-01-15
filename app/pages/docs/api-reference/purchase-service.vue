@@ -2,13 +2,10 @@
   <DocPage
     title="PurchaseService"
     description="API reference for the purchase slip service"
+    sub-description="The <code>PurchaseService</code> service handles purchase slip certification."
     section="API Reference"
+    heading-id="purchase-service"
   >
-    <DocHeading :level="1" id="purchase-service">PurchaseService</DocHeading>
-    
-    <DocParagraph>
-      The <DocInlineCode>PurchaseService</DocInlineCode> service handles purchase slip certification.
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Methods</DocHeading>
 

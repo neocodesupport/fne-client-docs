@@ -2,13 +2,10 @@
   <DocPage
     title="InvoiceService"
     description="API reference for the sales invoice service"
+    sub-description="The <code>InvoiceService</code> service handles sales invoice certification."
     section="API Reference"
+    heading-id="invoice-service"
   >
-    <DocHeading :level="1" id="invoice-service">InvoiceService</DocHeading>
-    
-    <DocParagraph>
-      The <DocInlineCode>InvoiceService</DocInlineCode> service handles sales invoice certification.
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Methods</DocHeading>
 

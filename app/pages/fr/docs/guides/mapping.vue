@@ -2,13 +2,10 @@
   <DocPage
     title="Mapping ERP → FNE"
     description="Guide complet pour mapper vos données ERP vers le format FNE"
+    sub-description="Ce guide vous montre comment utiliser le mapping personnalisé pour transformer vos structures de données ERP vers le format FNE."
     section="Guides"
+    heading-id="mapping"
   >
-    <DocHeading :level="1" id="mapping">Mapping ERP → FNE</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment utiliser le mapping personnalisé pour transformer vos structures de données ERP vers le format FNE.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 

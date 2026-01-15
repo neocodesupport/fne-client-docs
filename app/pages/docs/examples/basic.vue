@@ -2,13 +2,10 @@
   <DocPage
     title="Basic Examples"
     description="Basic code examples to get started with FNE Client"
+    sub-description="This page contains basic code examples to get started with FNE Client."
     section="Examples"
+    heading-id="basic-examples"
   >
-    <DocHeading :level="1" id="basic-examples">Basic Examples</DocHeading>
-    
-    <DocParagraph>
-      This page contains basic code examples to get started with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="b2c-invoice">Simple B2C Invoice</DocHeading>
 

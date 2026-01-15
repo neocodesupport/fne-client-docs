@@ -2,13 +2,10 @@
   <DocPage
     title="Cas d'usage réels"
     description="Exemples de cas d'usage réels avec FNE Client"
+    sub-description="Cette page contient des exemples de cas d'usage réels avec FNE Client."
     section="Exemples"
+    heading-id="use-cases"
   >
-    <DocHeading :level="1" id="use-cases">Cas d'usage réels</DocHeading>
-    
-    <DocParagraph>
-      Cette page contient des exemples de cas d'usage réels avec FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="ecommerce">E-commerce : Certification automatique</DocHeading>
 

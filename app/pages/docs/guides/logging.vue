@@ -2,13 +2,10 @@
   <DocPage
     title="Logging"
     description="Guide for configuring logging with FNE Client"
+    sub-description="This guide shows you how to configure logging with FNE Client for debugging and monitoring."
     section="Guides"
+    heading-id="logging"
   >
-    <DocHeading :level="1" id="logging">Logging</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to configure logging with FNE Client for debugging and monitoring.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

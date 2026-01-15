@@ -2,13 +2,10 @@
   <DocPage
     title="Error Handling"
     description="Complete guide for handling errors with FNE Client"
+    sub-description="This guide shows you how to handle errors with FNE Client efficiently."
     section="Guides"
+    heading-id="error-handling"
   >
-    <DocHeading :level="1" id="error-handling">Error Handling</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to handle errors with FNE Client efficiently.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

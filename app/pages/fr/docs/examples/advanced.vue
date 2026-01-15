@@ -2,13 +2,10 @@
   <DocPage
     title="Exemples avancés"
     description="Exemples de code avancés avec FNE Client"
+    sub-description="Cette page contient des exemples de code avancés pour des cas d'usage complexes."
     section="Exemples"
+    heading-id="advanced-examples"
   >
-    <DocHeading :level="1" id="advanced-examples">Exemples avancés</DocHeading>
-    
-    <DocParagraph>
-      Cette page contient des exemples de code avancés pour des cas d'usage complexes.
-    </DocParagraph>
 
     <DocHeading :level="2" id="custom-taxes">Facture avec taxes personnalisées</DocHeading>
 

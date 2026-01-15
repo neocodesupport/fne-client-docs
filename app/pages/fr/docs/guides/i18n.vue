@@ -2,13 +2,10 @@
   <DocPage
     title="Internationalisation (i18n)"
     description="Guide pour utiliser l'internationalisation avec FNE Client"
+    sub-description="Ce guide vous montre comment utiliser l'internationalisation avec FNE Client pour les messages d'erreur et les traductions."
     section="Guides"
+    heading-id="i18n"
   >
-    <DocHeading :level="1" id="i18n">Internationalisation (i18n)</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment utiliser l'internationalisation avec FNE Client pour les messages d'erreur et les traductions.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 

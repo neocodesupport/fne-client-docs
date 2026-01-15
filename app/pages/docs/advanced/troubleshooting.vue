@@ -2,13 +2,10 @@
   <DocPage
     title="Troubleshooting"
     description="Troubleshooting guide to resolve common issues"
+    sub-description="This guide helps you resolve common issues with FNE Client."
     section="Advanced"
+    heading-id="troubleshooting"
   >
-    <DocHeading :level="1" id="troubleshooting">Troubleshooting</DocHeading>
-    
-    <DocParagraph>
-      This guide helps you resolve common issues with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="common-problems">Common Problems</DocHeading>
 

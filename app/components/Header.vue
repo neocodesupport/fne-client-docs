@@ -47,7 +47,7 @@
 
               <!-- Language Toggle - Visible sur tablette et desktop -->
               <div class="hidden md:block">
-                <LanguageToggle />
+              <LanguageToggle />
               </div>
 
               <!-- CTA Button (optionnel) -->

@@ -2,13 +2,10 @@
   <DocPage
     title="Purchase Slips"
     description="Complete guide for certifying purchase slips with FNE Client"
+    sub-description="This guide shows you how to certify purchase slips (agricultural product purchase invoices) with FNE Client."
     section="Guides"
+    heading-id="purchases"
   >
-    <DocHeading :level="1" id="purchases">Purchase Slips</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to certify purchase slips (agricultural product purchase invoices) with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

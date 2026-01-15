@@ -2,13 +2,10 @@
   <DocPage
     title="Real Use Cases"
     description="Real-world use case examples with FNE Client"
+    sub-description="This page contains real-world use case examples with FNE Client."
     section="Examples"
+    heading-id="use-cases"
   >
-    <DocHeading :level="1" id="use-cases">Real Use Cases</DocHeading>
-    
-    <DocParagraph>
-      This page contains real-world use case examples with FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="ecommerce">E-commerce: Automatic Certification</DocHeading>
 

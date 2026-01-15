@@ -2,13 +2,10 @@
   <DocPage
     title="Quick Start"
     description="Create your first certified invoice in just a few minutes"
+    sub-description="This guide shows you how to create your first certified invoice with FNE Client in just a few minutes."
     section="Getting Started"
+    heading-id="quick-start"
   >
-    <DocHeading :level="1" id="quick-start">Quick Start</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to create your first certified invoice with FNE Client in just a few minutes.
-    </DocParagraph>
 
     <DocHeading :level="2" id="prerequisites">Prerequisites</DocHeading>
 

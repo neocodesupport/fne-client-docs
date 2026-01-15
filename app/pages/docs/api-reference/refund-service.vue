@@ -2,13 +2,10 @@
   <DocPage
     title="RefundService"
     description="API reference for the refund service"
+    sub-description="The <code>RefundService</code> service handles refund creation."
     section="API Reference"
+    heading-id="refund-service"
   >
-    <DocHeading :level="1" id="refund-service">RefundService</DocHeading>
-    
-    <DocParagraph>
-      The <DocInlineCode>RefundService</DocInlineCode> service handles refund creation.
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Methods</DocHeading>
 

@@ -2,13 +2,10 @@
   <DocPage
     title="Enums"
     description="Référence complète des enums disponibles dans FNE Client"
+    sub-description="FNE Client utilise des enums PHP 8.2+ pour garantir la sécurité de type."
     section="Référence API"
+    heading-id="enums"
   >
-    <DocHeading :level="1" id="enums">Enums</DocHeading>
-    
-    <DocParagraph>
-      FNE Client utilise des enums PHP 8.2+ pour garantir la sécurité de type.
-    </DocParagraph>
 
     <DocHeading :level="2" id="invoice-type">InvoiceType</DocHeading>
 

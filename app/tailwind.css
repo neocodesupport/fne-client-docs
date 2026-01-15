@@ -8,6 +8,7 @@
 
 :root {
     --ui-container: 80rem;
+    --ui-content-width: 44rem;
     /* Hauteur du header : h-16 (64px) + mt-4 (16px) + py-2 (8px top + 8px bottom) = ~96px */
     --ui-header-height: 96px;
 }
@@ -45,7 +46,7 @@ html {
 }
 
 .code-highlight pre + pre {
-  margin-top: .75rem!important;
+  margin-top: 0!important;
 }
 
 .code-highlight pre code {

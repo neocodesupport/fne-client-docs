@@ -2,13 +2,10 @@
   <DocPage
     title="Journalisation"
     description="Guide pour configurer le logging avec FNE Client"
+    sub-description="Ce guide vous montre comment configurer le logging avec FNE Client pour le débogage et le suivi."
     section="Guides"
+    heading-id="logging"
   >
-    <DocHeading :level="1" id="logging">Journalisation</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment configurer le logging avec FNE Client pour le débogage et le suivi.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 

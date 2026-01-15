@@ -2,13 +2,10 @@
   <DocPage
     title="Exemples basiques"
     description="Exemples de code basiques pour démarrer avec FNE Client"
+    sub-description="Cette page contient des exemples de code basiques pour démarrer avec FNE Client."
     section="Exemples"
+    heading-id="basic-examples"
   >
-    <DocHeading :level="1" id="basic-examples">Exemples basiques</DocHeading>
-    
-    <DocParagraph>
-      Cette page contient des exemples de code basiques pour démarrer avec FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="b2c-invoice">Facture B2C simple</DocHeading>
 

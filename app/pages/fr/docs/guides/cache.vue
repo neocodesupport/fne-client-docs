@@ -2,13 +2,10 @@
   <DocPage
     title="Cache"
     description="Guide pour utiliser le cache avec FNE Client"
+    sub-description="Ce guide vous montre comment utiliser le cache avec FNE Client pour améliorer les performances."
     section="Guides"
+    heading-id="cache"
   >
-    <DocHeading :level="1" id="cache">Cache</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment utiliser le cache avec FNE Client pour améliorer les performances.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 

@@ -2,13 +2,10 @@
   <DocPage
     title="InvoiceService"
     description="Référence API pour le service de factures de vente"
+    sub-description="Le service <code>InvoiceService</code> gère la certification des factures de vente."
     section="Référence API"
+    heading-id="invoice-service"
   >
-    <DocHeading :level="1" id="invoice-service">InvoiceService</DocHeading>
-    
-    <DocParagraph>
-      Le service <DocInlineCode>InvoiceService</DocInlineCode> gère la certification des factures de vente.
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Méthodes</DocHeading>
 

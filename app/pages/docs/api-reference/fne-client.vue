@@ -2,13 +2,10 @@
   <DocPage
     title="FNEClient"
     description="API reference for the main FNEClient class"
+    sub-description="The main <code>FNEClient</code> class is the entry point for all FNE operations."
     section="API Reference"
+    heading-id="fne-client"
   >
-    <DocHeading :level="1" id="fne-client">FNEClient</DocHeading>
-    
-    <DocParagraph>
-      The main <DocInlineCode>FNEClient</DocInlineCode> class is the entry point for all FNE operations.
-    </DocParagraph>
 
     <DocHeading :level="2" id="installation">Installation</DocHeading>
 

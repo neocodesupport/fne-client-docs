@@ -2,13 +2,10 @@
   <DocPage
     title="Dépannage"
     description="Guide de dépannage pour résoudre les problèmes courants"
+    sub-description="Ce guide vous aide à résoudre les problèmes courants avec FNE Client."
     section="Avancé"
+    heading-id="troubleshooting"
   >
-    <DocHeading :level="1" id="troubleshooting">Dépannage</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous aide à résoudre les problèmes courants avec FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="common-problems">Problèmes courants</DocHeading>
 

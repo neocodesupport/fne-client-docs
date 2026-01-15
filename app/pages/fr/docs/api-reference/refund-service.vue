@@ -2,13 +2,10 @@
   <DocPage
     title="RefundService"
     description="Référence API pour le service d'avoirs"
+    sub-description="Le service <code>RefundService</code> gère la création d'avoirs (remboursements)."
     section="Référence API"
+    heading-id="refund-service"
   >
-    <DocHeading :level="1" id="refund-service">RefundService</DocHeading>
-    
-    <DocParagraph>
-      Le service <DocInlineCode>RefundService</DocInlineCode> gère la création d'avoirs (remboursements).
-    </DocParagraph>
 
     <DocHeading :level="2" id="methods">Méthodes</DocHeading>
 

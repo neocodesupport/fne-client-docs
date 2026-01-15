@@ -2,13 +2,10 @@
   <DocPage
     title="Internationalization (i18n)"
     description="Guide for using internationalization with FNE Client"
+    sub-description="This guide shows you how to use internationalization with FNE Client for error messages and translations."
     section="Guides"
+    heading-id="i18n"
   >
-    <DocHeading :level="1" id="i18n">Internationalization (i18n)</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to use internationalization with FNE Client for error messages and translations.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

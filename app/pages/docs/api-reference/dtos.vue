@@ -2,13 +2,10 @@
   <DocPage
     title="DTOs"
     description="Complete reference for DTOs (Data Transfer Objects)"
+    sub-description="DTOs (Data Transfer Objects) allow manipulating data in a type-safe way."
     section="API Reference"
+    heading-id="dtos"
   >
-    <DocHeading :level="1" id="dtos">DTOs</DocHeading>
-    
-    <DocParagraph>
-      DTOs (Data Transfer Objects) allow manipulating data in a type-safe way.
-    </DocParagraph>
 
     <DocHeading :level="2" id="response-dto">ResponseDTO</DocHeading>
 

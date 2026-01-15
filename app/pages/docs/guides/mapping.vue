@@ -2,13 +2,10 @@
   <DocPage
     title="ERP → FNE Mapping"
     description="Complete guide for mapping your ERP data to FNE format"
+    sub-description="This guide shows you how to use custom mapping to transform your ERP data structures to FNE format."
     section="Guides"
+    heading-id="mapping"
   >
-    <DocHeading :level="1" id="mapping">ERP → FNE Mapping</DocHeading>
-    
-    <DocParagraph>
-      This guide shows you how to use custom mapping to transform your ERP data structures to FNE format.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Overview</DocHeading>
 

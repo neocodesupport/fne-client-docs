@@ -2,13 +2,10 @@
   <DocPage
     title="Démarrage rapide"
     description="Créez votre première facture certifiée en quelques minutes"
+    sub-description="Ce guide vous montre comment créer votre première facture certifiée avec FNE Client en quelques minutes."
     section="Démarrage"
+    heading-id="quick-start"
   >
-    <DocHeading :level="1" id="quick-start">Démarrage rapide</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment créer votre première facture certifiée avec FNE Client en quelques minutes.
-    </DocParagraph>
 
     <DocHeading :level="2" id="prerequisites">Prérequis</DocHeading>
 

@@ -2,13 +2,10 @@
   <DocPage
     title="Bordereaux d'achat"
     description="Guide complet pour certifier des bordereaux d'achat avec FNE Client"
+    sub-description="Ce guide vous montre comment certifier des bordereaux d'achat (factures d'achat de produits agricoles) avec FNE Client."
     section="Guides"
+    heading-id="purchases"
   >
-    <DocHeading :level="1" id="purchases">Bordereaux d'achat</DocHeading>
-    
-    <DocParagraph>
-      Ce guide vous montre comment certifier des bordereaux d'achat (factures d'achat de produits agricoles) avec FNE Client.
-    </DocParagraph>
 
     <DocHeading :level="2" id="overview">Vue d'ensemble</DocHeading>
 
