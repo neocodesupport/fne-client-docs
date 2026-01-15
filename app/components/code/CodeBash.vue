@@ -26,7 +26,7 @@
     <pre
       v-for="(line, index) in highlightedLines"
       :key="index"
-      :data-prefix="getPrefix(index)"
+      :data-prefix="'$'"
       :class="line.class"
     >
 <code v-html="line.html"></code>
@@ -58,12 +58,6 @@ const { t } = useAppI18n()
 
 const highlightedLines = ref<Array<{ code: string; html: string; class: string }>>([])
 const copied = ref(false)
-
-// Fonction pour obtenir le préfixe approprié
-const getPrefix = (index: number): string | number | undefined => {
-  // Pour shell, utiliser "$" seulement sur la première ligne
-  return index === 0 ? '$' : undefined
-}
 
 onMounted(async () => {
   if (import.meta.client) {
